@@ -1,0 +1,47 @@
+{% extends 'nurse.html' %}
+
+{% block content1 %}
+
+<div class="table table-striped">
+                <table>
+
+                    {% if records %}
+                    <thead class="thead-dark">  
+                    <tr>
+                    <th >Room Id</th>
+                    <th>Patient Id</th>
+                    <th>Patient Name</th>
+                    <th>Joined Date</th>
+                    <th>Leaving Date</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                    <td>{{ records.room_id }}</td>
+                    <td>{{ records.pid }}</td>
+                    <td> {{ records.Name }} </td>
+                    <td> {{ records.Joined_date }} </td>
+                    {% if records.Leaving_date %}
+                    <td>{{ records.Leaving_date }}</td>
+                    {% else %}
+                    <td>None</td>
+                    {% endif %}
+                    </tr>
+                    
+                    {% else %}
+                    
+                        <thead class="thead-dark">
+                        
+                    <tr>
+                    <th >Room Id</th>
+                    <th>Description</th>
+                    <th>Allocate Room</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>{{room_id}}</td><td>Not allocated</td>
+                        <td><a href="{{ url_for('room_allocation',which_id='Room',patient_room_id=room_id)}}">Click Here to allocate room</a></td>
+                    </tr>
+                    {% endif %}
+                </table>
+</div>
+{% endblock %}

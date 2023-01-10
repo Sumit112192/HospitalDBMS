@@ -1,0 +1,41 @@
+{% extends 'nurse.html' %}
+
+{% block content1 %}
+
+<div class="table table-striped">
+                <table>
+                    <thead class="thead-dark">
+                    <tr>
+                    <th >Patient Id</th>
+                    <th>Patient Name</th>
+                    <th>Room Id</th>
+                    <th>Joined Date</th>
+                    <th>Leaving Date</th>
+                    </tr>
+                </thead>
+                    
+                    {% if record1 %}
+                    {% for record1 in record1 %}
+                    <tr>
+                    <td>{{record2.pid}}</td><td>{{record2.Name}}</td>
+                    <td> {{record1.room_id}} </td>
+                    <td> {{record1.Joined_date}} </td>
+                    {% if record1.Leaving_date %}
+                    <td>{{ record1.Leaving_date }}</td>
+                    {% else %}
+                    <td>None</td>
+                    {% endif %}
+
+                </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>{{record2.pid}}</td><td>{{record2.Name}}</td>
+                        <td><a href="{{ url_for('room_allocation',which_id='Patient',patient_room_id=record2.pid)}}">Click Here to allocate room</a></td>
+                        <td> None</td>
+                    <td>None</td>
+                    </tr>
+                    {% endif %}
+                </table>
+</div>
+{% endblock %}

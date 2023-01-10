@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+    {% block head %} 
+        {{ super() }}
+        <link rel="stylesheet" href="{{url_for('static', filename='profilestyle.css')}}" >
+
+    {% endblock %} 
+    
+{% block body %}
+    
+    <div class = "box">
+        <div class = "appointment">
+            <h3>Your Appointments</h3>
+            <table>
+            <tr>
+                <th>Patient Name</th><th>Time</th><th>Description</th>
+            </tr>
+            {% if record1 %}
+            {% for record in record1 %}
+            <tr>
+                <td>{{record.Name}}</td><td>{{record.Timing}}</td><td>{{record.Description}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            
+            </table>
+        
+        </div>
+        
+        <div class="ptreat">
+            <h3>Patient treatment </h3>
+            <table>
+
+            <tr>
+
+                <th>Patient ID</th><th>Patient Name</th><th>Disease</th>
+            </tr>
+            {% if record2 %}
+            {% for record in record2 %}
+            <tr>
+                <td>{{record.pid}}</td><td>{{record.Name}}</td><td>{{record.Disease}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            
+            </table>
+        
+       </div>
+       
+    </div>
+    {% endblock %}
+            

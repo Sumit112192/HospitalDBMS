@@ -1,0 +1,55 @@
+   {% extends 'layoutProfile.html' %}
+
+   {% block body %}
+   {% include 'includes/navbar.html' %}
+    <div class="container">
+
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				
+				<div class="profile-userpic">
+				<center>
+					<img src = "http://guarddome.com/assets/images/profile-img.jpg"  alt = "" class = "imgr-responsive img-circle">
+                </center>        
+				</div>
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{session.username}}
+					</div>
+					<div class="profile-usertitle-job">
+					    {{session.profession}}
+					</div>
+				</div>
+				<div class="profile-usermenu">
+					<ul class="navbar-nav bg-dark navbar-light ">
+						<li class="active">
+							<a href="{{url_for('detail',profession=profession,id=id)}}" target="iframe1">
+							<i class="glyphicon glyphicon-user"></i>
+							Detail  :</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav bg-dark ">
+						<li>
+							<a href="{{url_for('edit',profession=profession,id=id)}}" target="iframe1">
+							<i class="glyphicon glyphicon-ok"></i>
+							Edit   :</a>
+						</li>
+						
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-9" >
+            <iframe src="{{url_for('detail',profession=profession,id=id)}}" class="profile-content" name="iframe1">
+			   
+            </iframe>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+
+	{% endblock %}

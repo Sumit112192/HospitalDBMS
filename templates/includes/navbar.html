@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light ">
+  <a class="navbar-brand" href="#"> Hospital Management </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
+  <div class="collapse navbar-collapse" id="#navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      
+    </ul>
+
+    <ul class="navbar-nav  navbar-right">
+    {% if session.logged_in %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('profile',profession=profession)}}">Profile</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('dashboard',profession=profession)}}">Dashboard</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      {% if profession=="Receptionist" %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('search',profession=profession) }}">Appointments/Bill</a>
+      </li>
+      {% elif profession=="Nurse" %}
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('room',profession=profession) }}">Room Allocation</a>
+      </li>
+      {% elif profession=="Doctor" %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('doctor_appointment',profession=profession) }}">Your Appointments</a>
+      </li>
+      {% endif %}
+
+      
+    {% else %}
+       <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+    {% endif %}
+      
+  </div>
+</div>
+</nav> 

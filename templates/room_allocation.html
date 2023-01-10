@@ -1,0 +1,53 @@
+{% include 'layout.html' %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block head %}
+  {{ super() }}
+
+  <link type="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+
+{% block content %}
+{% from "includes/formhelpers.html" import render_field %}
+  <div class="container">
+    <h1>Allocate Room</h1>
+    <form method="POST">
+    <div class="row">
+      <div class='col-sm-6'>
+        {% if which_id=="Patient" %}
+        {{ render_field(form.patient_id,class="form-control", value=patient_room_id , readonly="readonly")  }}
+        {% else %}
+        {{ render_field(form.patient_id,class="form-control") }}
+        {% endif %}
+        <br>
+        {% if which_id=="Room" %}
+        {{ render_field(form.room_id,class="form-control", value=patient_room_id, readonly="readonly") }}
+        {% else %}
+        {{ render_field(form.room_id,class="form-control") }}
+        {% endif %}
+        <br>
+        {{ render_field(form.date,class="form-control") }}
+        <br>
+        <input type="submit" class="btn btn-primary" value="Add">
+        {% block warning %}
+        {% endblock %}
+
+      </div>
+    </div>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#datepick').datetimepicker();
+    });
+  </script>
+{% endblock %}

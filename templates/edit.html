@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+    <head> 
+        <meta charset="utf-8">
+        <title>First Page</title> 
+        <link rel="stylesheet" href="{{url_for('static', filename='profilestyle.css')}}" >
+
+    </head> 
+    
+    <body>
+        {% from "includes/formhelpers.html" import render_field %}
+            
+        <form method='POST' class=" wrapper ">
+        
+        <div class = "right ">
+            <div class="info ">
+                <h3>Information</h3>
+                 <div class="info_data  ">
+                     <div class="data">
+                        {{ render_field(form.name, class=" input input-field input-group", value=user['Name'], readonly="readonly")}}
+                     </div>
+                     <div class="data">
+                        {{ render_field(form.sex, class="input input-field input-group", value=user['SEX'])}}
+                     </div>
+                     
+                 </div>
+            </div>
+       
+           <div class="address">
+               <h3>Address Details</h3>
+               <div class="address_data">
+                    <div class="data">
+                    {{ render_field(form.address, class="input input-field input-group", value=user['Address'])}}
+                    </div>
+                    <div class="data">
+                    {{ render_field(form.city, class="input input-field input-group", value=user['City'])}}
+                    </div>
+                    <div class="data">
+                    {{ render_field(form.pincode, class="input input-field input-group", value=user['Pincode'])}}
+                    </div>
+              </div>
+          </div>
+
+
+         <div class="info">
+            <h3>Contact</h3>
+            <div class="info_data">
+               <div class="data">
+                {{ render_field(form.email, class="input input-field input-group",value=user['Email'],readonly="readonly")}}
+                </div>
+                <div class="data">
+                {{ render_field(form.contact, class="input input-field input-group", value=user['Contact'])}}
+                </div>
+                
+                
+           </div>
+        </div>
+        <center>
+        <button type="submit" class="submit-btn">Submit</button>
+        </center>
+      
+      
+    </div>
+</form>
+    </body>
+
+</html>

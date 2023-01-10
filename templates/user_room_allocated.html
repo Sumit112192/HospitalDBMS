@@ -1,0 +1,13 @@
+{% extends 'room_allocation.html' %}
+
+{% block warning %}
+{% if which_id=="Patient" %}
+<div class="alert alert-danger" role="alert">
+  That room has already been allocated
+</div>
+{% elif which_id=="Room" %}
+<div class="alert alert-danger" role="alert">
+  Patient has already been allocated room
+</div>
+{% endif %}
+{% endblock %}

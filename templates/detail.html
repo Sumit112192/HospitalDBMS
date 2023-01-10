@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+    <head> 
+        <meta charset="utf-8">
+        <title>First Page</title> 
+        <link rel="stylesheet" href="{{url_for('static', filename='profilestyle.css')}}" >
+
+    </head> 
+    
+    <body>
+        <div class="wrapper">
+   
+            <div class="right">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                     <div class="data">
+                        <h4>Name</h4>
+                        <p>{{user.Name}}</p>
+                     </div>
+                     <div class="data">
+                        <h4>Gender</h4>
+                        <p>{{user.SEX}}</p>
+                     </div>
+                     <div class="data"></div>
+               </div>
+            </div>
+       
+           <div class="address">
+               <h3>Address Details</h3>
+               <div class="address_data">
+                    <div class="data">
+                        <h4>Address</h4>
+                        <p>{{user.Address}}</p>
+                    </div>
+                    <div class="data">
+                      <h4>City</h4>
+                      <p>{{user.City}}</p>
+                    </div>
+                    <div class="data">
+                      <h4>Pincode</h4>
+                      <p>{{user.Pincode}}</p>
+                    </div>
+              </div>
+          </div>
+           
+         <div class="info">
+            <h3>Contact</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Email</h4>
+                    <p>{{user.Email}}</p>
+                  </div>
+                   <div class="data">
+                    <h4>Contact</h4>
+                    <p>{{user.Contact}}</p>
+                  </div>
+                  <div class="data"></div>
+             </div>
+        </div>
+        {% if profession=="Patient" %}
+        {% if appointment_details %}
+          <div class="info">
+            <h3>Appointment Details</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Doctor Name </h4>
+                    <p>{{appointment_details.Name}}</p>
+                  </div>
+                   <div class="data">
+                    <h4>Timing</h4>
+                    <p>{{appointment_details.Timing}}</p>
+                  </div>
+                  <div class="data">
+                    <h4>Description</h4>
+                    <p>{{appointment_details.Description}}</p>
+                  </div>
+                  <div class="data"></div>
+             </div>
+        
+        </div>
+        {% endif %}
+        {% if treatment_detail %}
+        <div class="info">
+            <h3>Treatment Details</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Disease</h4>
+                    <p>{{treatment_detail.Disease}}</p>
+                  </div>
+                   <div class="data">
+                    <h4>Treatment Bill</h4>
+                    <p>{{treatment_detail.Amount}}</p>
+                  </div>
+                  <div class="data"></div>
+             </div>
+        </div>
+        {% endif %}
+        {% if room_details %}
+        <div class="info">
+            <h3>Room Allocated</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Room No</h4>
+                    <p>{{room_details.room_id}}</p>
+                  </div>
+                   <div class="data">
+                    <h4>Joined Date</h4>
+                    <p>{{room_details.Joined_date}}</p>
+                  </div>
+                  <div class="data"></div>
+             </div>
+        </div>
+        {% endif %}
+        {% endif %}
+      
+      
+      
+    </div>
+</div>
+    </body>
+
+</html>
